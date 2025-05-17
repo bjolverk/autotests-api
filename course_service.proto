@@ -1,0 +1,21 @@
+syntax = "proto3";
+package courseservice;
+
+// Сообщение запроса GetCourseRequest
+message GetCourseRequest {
+    string course_id = 1;
+}
+
+
+// Сообщение ответа GetCourseResponse
+message GetCourseResponse {
+    string course_id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+// Определите gRPC-сервис CourseService, содержащий метод GetCourse
+
+service CourseService {
+    rpc GetCourse (GetCourseRequest) returns (GetCourseResponse);
+}
