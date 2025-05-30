@@ -1,7 +1,8 @@
-from clients.api_client import APIClient
+from typing import TypedDict
+
 from httpx import Response
 
-from typing import TypedDict
+from clients.api_client import APIClient
 
 
 class UpdateUserRequestDict(TypedDict):
@@ -18,22 +19,23 @@ class PrivateUsersClient(APIClient):
     """
     Клиент для работы с /api/v1/users
     """
-    def get_get_user_me_api(self) -> Response:
+
+    def get_user_me_api(self) -> Response:
         """
         Метод получения текущего пользователя.
 
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get('/api/v1/users/me')
+        return self.get("/api/v1/users/me")
 
-    def get_get_user_api(self, user_id: str) -> Response:
+    def get_user_api(self, user_id: str) -> Response:
         """
         Метод получения пользователя по идентификатору.
 
         :param user_id: Идентификатор пользователя.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get(f'/api/v1/users/{user_id}')
+        return self.get(f"/api/v1/users/{user_id}")
 
     def update_user_api(self, user_id: str, request: UpdateUserRequestDict) -> Response:
         """
@@ -43,7 +45,7 @@ class PrivateUsersClient(APIClient):
         :param request: Словарь с email, lastName, firstName, middleName.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.patch(f'/api/v1/users/{user_id}', json=request)
+        return self.patch(f"/api/v1/users/{user_id}", json=request)
 
     def delete_user_api(self, user_id: str) -> Response:
         """
@@ -52,4 +54,4 @@ class PrivateUsersClient(APIClient):
         :param user_id: Идентификатор пользователя.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.delete(f'/api/v1/users/{user_id}')
+        return self.delete(f"/api/v1/users/{user_id}")

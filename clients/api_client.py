@@ -1,16 +1,11 @@
-from httpx import Client, URL, QueryParams, Response
 from typing import Any
 
+from httpx import Client, URL, Response, QueryParams
 from httpx._types import RequestData, RequestFiles
 
 
 class APIClient:
     def __init__(self, client: Client):
-        """
-        Базовый API клиент, принимающий объект httpx.Client.
-
-        :param client: экземпляр httpx.Client для выполнения HTTP-запросов
-        """
         self.client = client
 
     def get(self, url: URL | str, params: QueryParams | None = None) -> Response:
@@ -23,12 +18,13 @@ class APIClient:
         """
         return self.client.get(url, params=params)
 
-    def post(self,
-             url: URL | str,
-             json: Any | None = None,
-             data: RequestData | None = None,
-             files: RequestFiles | None = None
-             ) -> Response:
+    def post(
+            self,
+            url: URL | str,
+            json: Any | None = None,
+            data: RequestData | None = None,
+            files: RequestFiles | None = None
+    ) -> Response:
         """
         Выполняет POST-запрос.
 
@@ -50,7 +46,7 @@ class APIClient:
         """
         return self.client.patch(url, json=json)
 
-    def delete(self, url: URL | str, ) -> Response:
+    def delete(self, url: URL | str) -> Response:
         """
         Выполняет DELETE-запрос (удаление данных).
 
