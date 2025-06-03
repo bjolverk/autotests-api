@@ -50,11 +50,12 @@ class CreateUserRequestSchema(BaseModel):
     """
     Модель запроса на создание пользователя
     """
+    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
     email: EmailStr
-    password: str
-    last_name: str = Field(alias="lastName")
-    first_name: str = Field(alias="firstName")
-    middle_name: str = Field(alias="middleName")
+    password: str  = Field(min_length=8,max_length=64, pattern=r"^(?=.*[A-Za-z])(?=.*\d).*$")
+    last_name: str #= Field(alias="lastName")
+    first_name: str #= Field(alias="firstName")
+    middle_name: str #= Field(alias="middleName")
 
 
 class CreateUserResponseSchema(BaseModel):
