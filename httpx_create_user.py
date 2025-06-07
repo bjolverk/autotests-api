@@ -1,7 +1,7 @@
 # from mimesis import Person
 
 import httpx
-from tools.fakers import get_random_email
+from tools.fakers import fake
 #
 # my_person = Person('ru')
 # print(my_person.email())
@@ -13,7 +13,7 @@ from tools.fakers import get_random_email
 # print(my_person.surname())
 
 payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "string",
     "lastName": "string",
     "firstName": "string",

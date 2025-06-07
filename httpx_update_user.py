@@ -1,9 +1,9 @@
 import httpx
 
-from tools.fakers import get_random_email
+from tools.fakers import fake
 
 create_user_payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "string",
     "lastName": "string",
     "firstName": "string",
@@ -29,7 +29,7 @@ authorization_user_headers = {
 }
 
 patch_user_payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "123456QWERTY",
     "lastName": "Sharikov",
     "firstName": "Polygraph",
