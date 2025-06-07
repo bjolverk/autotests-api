@@ -25,4 +25,20 @@ create_user_response_schema = CreateUserResponseSchema.model_json_schema()
 # jsonschema.validate(instance=create_user_response.json(), schema=create_user_response_schema)
 
 validate_json_schema(instance=create_user_response.json(), schema=create_user_response_schema)
-
+#
+# schema_1 = {
+#     "type": "object",
+#     "properties": {
+#         "id": {"type": "string"},
+#         "email": {"type": "string", "format": "email"},
+#         "age": {"type": "integer"}
+#     },
+#     "required": ["id", "email"]
+# }
+#
+# response = {
+#     "id": "12345",
+#     "email": "user-email",
+#     "age": 25
+# }
+# validate_json_schema(instance=response, schema=schema_1)
