@@ -1,4 +1,5 @@
-from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, UserSchema
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, UserSchema, \
+    GetUserResponseSchema
 from tools.assertions.base import assert_equal
 
 
@@ -31,7 +32,7 @@ def assert_user(actual: UserSchema, expected: UserSchema):
     assert_equal(actual.middle_name, expected.middle_name, name='middle_name')
 
 
-def assert_get_user_response(get_user_response: UserSchema, create_user_response: UserSchema):
+def assert_get_user_response(get_user_response: GetUserResponseSchema, create_user_response: CreateUserResponseSchema):
     """
     Проверяет, что данные пользователя при GET- запросе совпадают с данными при создании этого пользователя.
 
