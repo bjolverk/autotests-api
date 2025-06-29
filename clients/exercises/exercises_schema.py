@@ -49,7 +49,7 @@ class GetExercisesQuerySchema(BaseModel):
     course_id: str
 
 
-class CreateExerciseQueryRequestSchema(BaseModel):
+class CreateExerciseRequestSchema(BaseModel):
     """
     Описание структуры запроса на создание упражнения.
     """

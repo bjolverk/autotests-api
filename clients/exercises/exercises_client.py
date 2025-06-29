@@ -8,7 +8,7 @@ from clients.exercises.exercises_schema import(
     GetExerciseResponseSchema,
     CreateExerciseResponseSchema,
     GetExercisesQuerySchema,
-    CreateExerciseQueryRequestSchema,
+    CreateExerciseRequestSchema,
     UpdateExerciseQueryRequestSchema,
     UpdateExerciseQueryResponseSchema
 )
@@ -35,7 +35,7 @@ class ExercisesClient(APIClient):
         """
         return self.get(f'/api/v1/exercises/{exercise_id}')
 
-    def create_exercise_api(self, request: CreateExerciseQueryRequestSchema) -> Response:
+    def create_exercise_api(self, request: CreateExerciseRequestSchema) -> Response:
         """
         Метод для создания задания
         :param request: Словарь с  title, courseId, maxScore, minScore, orderIndex,
@@ -70,7 +70,7 @@ class ExercisesClient(APIClient):
         response = self.get_exercise_api(exercise_id)
         return GetExerciseResponseSchema.model_validate_json(response.text)  # response.json()
 
-    def create_exercise(self, request: CreateExerciseQueryRequestSchema) -> CreateExerciseResponseSchema:
+    def create_exercise(self, request: CreateExerciseRequestSchema) -> CreateExerciseResponseSchema:
         response = self.create_exercise_api(request)
         return CreateExerciseResponseSchema.model_validate_json(response.text)  # response.json()
 
